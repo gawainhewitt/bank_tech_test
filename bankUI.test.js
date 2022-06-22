@@ -61,5 +61,14 @@ describe("BankUI", () => {
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
+    it("throws an error when a deposit is made with too many decimal places", () => {
+      const bankAccount = new BankAccount;
+      const transactions = new Transactions;
+      const reports = new Reports
+      const bankUI = new BankUI(bankAccount, transactions, reports);
+      expect(() => {
+        bankUI.deposit(2000.627);
+      }).toThrow("too many decimal places");
+    })
   })
 })

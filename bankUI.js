@@ -8,7 +8,8 @@ module.exports = class BankUI {
 
   deposit = (money) => {
     if(this.#countDecimals(money) > 2){
-      return "error! too many decimal places";
+      console.log("are we geting here?");
+      throw "too many decimal places";
     }else{
       this.bankAccount.deposit(money.toFixed(2));
     }
