@@ -26,7 +26,10 @@ describe("BankUI", () => {
       const transactions = new Transactions;
       const reports = new Reports
       const bankUI = new BankUI(bankAccount, transactions, reports);
-      const result = "date        ||  credit  ||  debit   ||  balance";
+      let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
+        return [];
+      });
+      const result = "date || credit || debit || balance";
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(1, result);
     })
@@ -35,10 +38,10 @@ describe("BankUI", () => {
       const transactions = new Transactions;
       const reports = new Reports
       const bankUI = new BankUI(bankAccount, transactions, reports);
-      let spy = jest.spyOn(bankAccount, 'deposit').mockImplementation(() => {
-        return 1000.00.toFixed(2);
+      let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
+        return [{date: "23/02/2022 ", credit: "1000.00 ", deposit: "", balance: "1000.00 "}];
       });
-      const result = "23/02/2022  ||  1000.00 ||          ||  1000.00";
+      const result = "23/02/2022 || 1000.00 || || 1000.00 ";
       bankUI.deposit(1000.00);
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);

@@ -15,8 +15,10 @@ module.exports = class BankUI {
   }
 
   printStatement = () => {
-    console.log(`date        ||  credit  ||  debit   ||  balance`);
-    console.log(`${this.#getDate()}  ||  ${this.bankAccount.deposit()} ||          ||  1000.00`);
+    console.log(`date || credit || debit || balance`);
+    this.reports.statement(this.bankAccount.report()).forEach(element => {
+      console.log(`${element.date}|| ${element.credit}|| ${element.deposit}|| ${element.balance}`);
+    });
   }
 
   #getDate = () => {
