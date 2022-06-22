@@ -7,13 +7,18 @@ module.exports = class BankUI {
   }
 
   deposit = (money) => {
-    this.transactions.deposit(money, this.bankAccount); // refactor to transactions
+    this.transactions.deposit(money, this.bankAccount); 
+  }
+
+  withdrawal = (money) => {
+    this.transactions.withdrawal(money, this.bankAccount); 
+
   }
 
   printStatement = () => {
     console.log(`date || credit || debit || balance`);
     this.reports.statement(this.bankAccount.report()).forEach(element => {
-      console.log(`${element.date}|| ${element.credit}|| ${element.deposit}|| ${element.balance}`);
+      console.log(`${element.date}|| ${element.credit}|| ${element.debit}|| ${element.balance}`);
     });
   }
 }

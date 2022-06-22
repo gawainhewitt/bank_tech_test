@@ -39,7 +39,7 @@ describe("BankUI", () => {
       const reports = new Reports
       const bankUI = new BankUI(bankAccount, transactions, reports);
       let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
-        return [{date: "23/02/2022 ", credit: "1000.00 ", deposit: "", balance: "1000.00 "}];
+        return [{date: "23/02/2022 ", credit: "1000.00 ", debit: "", balance: "1000.00 "}];
       });
       const result = "23/02/2022 || 1000.00 || || 1000.00 ";
       bankUI.deposit(1000.00);
@@ -53,7 +53,7 @@ describe("BankUI", () => {
       const reports = new Reports
       const bankUI = new BankUI(bankAccount, transactions, reports);
       let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
-        return [{date: "23/02/2022 ", credit: "2000.67 ", deposit: "", balance: "2000.67 "}];
+        return [{date: "23/02/2022 ", credit: "2000.67 ", debit: "", balance: "2000.67 "}];
       });
       const result = "23/02/2022 || 2000.67 || || 2000.67 ";
       bankUI.deposit(2000.67);
@@ -61,6 +61,24 @@ describe("BankUI", () => {
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
-    // some credit tests
+    it("console logs the amount and date when one withdrawal made", () => {
+      const bankAccount = new BankAccount;
+      const transactions = new Transactions;
+      const reports = new Reports
+      const bankUI = new BankUI(bankAccount, transactions, reports);
+      let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
+        return [{date: "23/02/2022 ", credit: "1500.00 ", debit: "", balance: "1500.00 "}, 
+        {date: "23/02/2022 ", credit: "", debit: "500.00 ", balance: "1000.00 "}];
+      });
+      const depositResult = "23/02/2022 || 1500.00 || || 1500.00 "
+      const withdrawalResult = "23/02/2022 || || 500.00 || 1000.00 ";
+      bankUI.deposit(1500);
+      bankUI.withdrawal(500);
+      expect(transactions.deposit).toHaveBeenCalledWith(1500.00, bankAccount);
+      expect(transactions.withdrawal).toHaveBeenCalledWith(500, bankAccount);
+      bankUI.printStatement();
+      expect(console.log).toHaveBeenNthCalledWith(2, depositResult);
+      expect(console.log).toHaveBeenNthCalledWith(3, withdrawalResult);
+    })
   })
 })

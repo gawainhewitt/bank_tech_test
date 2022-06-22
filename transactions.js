@@ -7,6 +7,11 @@ module.exports = class Transactions {
       bankAccount.deposit(money.toFixed(2), this.#getDate());
     }
   }
+
+  withdrawal(money, bankAccount) {
+    
+  }
+
   #getDate = () => {
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
