@@ -43,6 +43,7 @@ describe("BankUI", () => {
       });
       const result = "23/02/2022 || 1000.00 || || 1000.00 ";
       bankUI.deposit(1000.00);
+      expect(bankAccount.deposit).toHaveBeenCalledWith("1000.00")
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
@@ -56,6 +57,7 @@ describe("BankUI", () => {
       });
       const result = "23/02/2022 || 2000.67 || || 2000.67 ";
       bankUI.deposit(2000.67);
+      expect(bankAccount.deposit).toHaveBeenCalledWith("2000.67")
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
