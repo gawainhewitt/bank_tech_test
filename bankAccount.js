@@ -1,7 +1,8 @@
 module.exports = class BankAccount {
   
-  deposit() {
-
+  deposit(money, date) {
+    this.money = money;
+    this.date = date;
   }
 
   withdraw() {
@@ -10,10 +11,10 @@ module.exports = class BankAccount {
 
   report() {
     return {
-      date: "23/02/2022",
+      date: this.date,
       credit: 0.00,
-      deposit: 1000.00,
-      balance: 1000.00
+      deposit: this.money,
+      balance: this.money
     }
   };
 }
