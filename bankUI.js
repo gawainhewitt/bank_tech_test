@@ -7,12 +7,7 @@ module.exports = class BankUI {
   }
 
   deposit = (money) => {
-    if(this.#countDecimals(money) > 2){
-      console.log("are we geting here?");
-      throw "too many decimal places";
-    }else{
-      this.bankAccount.deposit(money.toFixed(2));
-    }
+    this.transactions.deposit(money, this.bankAccount); // refactor to transactions
   }
 
   printStatement = () => {
@@ -21,18 +16,4 @@ module.exports = class BankUI {
       console.log(`${element.date}|| ${element.credit}|| ${element.deposit}|| ${element.balance}`);
     });
   }
-
-  #getDate = () => {
-    let today = new Date();
-    let dd = String(today.getDate()).padStart(2, '0');
-    let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-    let yyyy = today.getFullYear();
-
-    return dd + '/' + mm + '/' + yyyy;
-  }
-
-  #countDecimals = (value) => {
-    if(Math.floor(value) === value) return 0;
-    return value.toString().split(".")[1].length || 0;
-    }
 }

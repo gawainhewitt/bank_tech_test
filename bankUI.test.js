@@ -43,7 +43,7 @@ describe("BankUI", () => {
       });
       const result = "23/02/2022 || 1000.00 || || 1000.00 ";
       bankUI.deposit(1000.00);
-      expect(bankAccount.deposit).toHaveBeenCalledWith("1000.00")
+      expect(transactions.deposit).toHaveBeenCalledWith(1000.00, bankAccount)
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
@@ -57,18 +57,10 @@ describe("BankUI", () => {
       });
       const result = "23/02/2022 || 2000.67 || || 2000.67 ";
       bankUI.deposit(2000.67);
-      expect(bankAccount.deposit).toHaveBeenCalledWith("2000.67")
+      expect(transactions.deposit).toHaveBeenCalledWith(2000.67, bankAccount)
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
-    it("throws an error when a deposit is made with too many decimal places", () => {
-      const bankAccount = new BankAccount;
-      const transactions = new Transactions;
-      const reports = new Reports
-      const bankUI = new BankUI(bankAccount, transactions, reports);
-      expect(() => {
-        bankUI.deposit(2000.627);
-      }).toThrow("too many decimal places");
-    })
+    // some credit tests
   })
 })
