@@ -7,8 +7,8 @@ describe('BankAccount', () => {
       bankAccount.deposit(1000.00, "23/02/2022");
       expect(bankAccount.report()).toEqual([{
         date: "23/02/2022",
-        credit: 0.00,
-        deposit: 1000.00,
+        credit: 1000.00,
+        debit: 0.00,
         balance: 1000.00
       }])
     })
@@ -17,8 +17,8 @@ describe('BankAccount', () => {
       bankAccount.deposit(500.00, "23/02/2022");
       expect(bankAccount.report()).toEqual([{
         date: "23/02/2022",
-        credit: 0.00,
-        deposit: 500.00,
+        credit: 500.00,
+        debit: 0.00,
         balance: 500.00
       }])
     })
@@ -27,8 +27,8 @@ describe('BankAccount', () => {
       bankAccount.deposit(750.00, "24/02/2022");
       expect(bankAccount.report()).toEqual([{
         date: "24/02/2022",
-        credit: 0.00,
-        deposit: 750.00,
+        credit: 750.00,
+        debit: 0.00,
         balance: 750.00
       }])
     })
@@ -39,14 +39,14 @@ describe('BankAccount', () => {
       expect(bankAccount.report()).toEqual([
         {
         date: "24/02/2022",
-        credit: 0.00,
-        deposit: 750.00,
+        credit: 750.00,
+        debit: 0.00,
         balance: 750.00
         },
         {
         date: "26/02/2022",
-        credit: 0.00,
-        deposit: 123.19,
+        credit: 123.19,
+        debit: 0.00,
         balance: 873.19
         }
       ])

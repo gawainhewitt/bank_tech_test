@@ -6,7 +6,7 @@ module.exports = class BankAccount {
     this.money = money;
     this.date = date;
     this.balance += money;
-    this.#transactions.push({date: this.date, credit: 0.00, deposit: this.money, balance: this.balance})
+    this.#transactions.push({date: this.date, credit: this.money, debit: 0.00, balance: this.balance})
   }
 
   withdraw() {
