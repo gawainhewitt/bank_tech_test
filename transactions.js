@@ -1,15 +1,18 @@
 module.exports = class Transactions {
   deposit(money, bankAccount) {
     if(this.#countDecimals(money) > 2){
-      console.log("are we getting here?");
       throw "too many decimal places";
     }else{
       bankAccount.deposit(money.toFixed(2), this.#getDate());
     }
   }
 
-  withdrawal(money, bankAccount) {
-    
+  withdraw(money, bankAccount) {
+    if(this.#countDecimals(money) > 2){
+      throw "too many decimal places";
+    }else{
+      bankAccount.withdraw(money.toFixed(2), this.#getDate());
+    }
   }
 
   #getDate = () => {

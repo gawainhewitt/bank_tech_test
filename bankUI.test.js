@@ -75,7 +75,7 @@ describe("BankUI", () => {
       bankUI.deposit(1500);
       bankUI.withdrawal(500);
       expect(transactions.deposit).toHaveBeenCalledWith(1500.00, bankAccount);
-      expect(transactions.withdrawal).toHaveBeenCalledWith(500, bankAccount);
+      expect(transactions.withdraw).toHaveBeenCalledWith(500, bankAccount);
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, depositResult);
       expect(console.log).toHaveBeenNthCalledWith(3, withdrawalResult);

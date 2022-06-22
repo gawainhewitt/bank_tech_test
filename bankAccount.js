@@ -4,7 +4,13 @@ module.exports = class BankAccount {
 
   }
 
-  report() {
+  withdraw() {
     
   }
+
+  report() {
+
+  }
 }
+
+//edge case of trying to withdraw more than the balance

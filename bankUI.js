@@ -11,7 +11,7 @@ module.exports = class BankUI {
   }
 
   withdrawal = (money) => {
-    this.transactions.withdrawal(money, this.bankAccount); 
+    this.transactions.withdraw(money, this.bankAccount); 
 
   }
 
