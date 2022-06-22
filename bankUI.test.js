@@ -46,5 +46,18 @@ describe("BankUI", () => {
       bankUI.printStatement();
       expect(console.log).toHaveBeenNthCalledWith(2, result);
     })
+    it("console logs the amount and date when a different deposit made", () => {
+      const bankAccount = new BankAccount;
+      const transactions = new Transactions;
+      const reports = new Reports
+      const bankUI = new BankUI(bankAccount, transactions, reports);
+      let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
+        return [{date: "23/02/2022 ", credit: "2000.67 ", deposit: "", balance: "2000.67 "}];
+      });
+      const result = "23/02/2022 || 2000.67 || || 2000.67 ";
+      bankUI.deposit(2000.67);
+      bankUI.printStatement();
+      expect(console.log).toHaveBeenNthCalledWith(2, result);
+    })
   })
 })
