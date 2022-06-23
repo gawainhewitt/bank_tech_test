@@ -17,7 +17,8 @@ module.exports = class BankUI {
 
   printStatement = () => {
     console.log(`date || credit || debit || balance`);
-    this.reports.statement(this.bankAccount.report()).forEach(element => {
+    const arrayToPrint = this.reports.statement(this.bankAccount.report()).reverse();
+    arrayToPrint.forEach(element => {
       console.log(`${element.date}|| ${element.credit}|| ${element.debit}|| ${element.balance}`);
     });
   }

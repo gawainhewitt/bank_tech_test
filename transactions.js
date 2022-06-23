@@ -3,7 +3,7 @@ module.exports = class Transactions {
     if(this.#countDecimals(money) > 2){
       throw "too many decimal places";
     }else{
-      bankAccount.deposit(money.toFixed(2), this.#getDate());
+      bankAccount.deposit(money, this.#getDate());
     }
   }
 
@@ -11,7 +11,7 @@ module.exports = class Transactions {
     if(this.#countDecimals(money) > 2){
       throw "too many decimal places";
     }else{
-      bankAccount.withdraw(money.toFixed(2), this.#getDate());
+      bankAccount.withdraw(money, this.#getDate());
     }
   }
 

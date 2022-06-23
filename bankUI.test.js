@@ -67,8 +67,7 @@ describe("BankUI", () => {
       const reports = new Reports
       const bankUI = new BankUI(bankAccount, transactions, reports);
       let spy = jest.spyOn(reports, 'statement').mockImplementation(() => {
-        return [{date: "23/02/2022 ", credit: "1500.00 ", debit: "", balance: "1500.00 "}, 
-        {date: "23/02/2022 ", credit: "", debit: "500.00 ", balance: "1000.00 "}];
+        return [{date: "23/02/2022 ", credit: "", debit: "500.00 ", balance: "1000.00 "}, {date: "23/02/2022 ", credit: "1500.00 ", debit: "", balance: "1500.00 "}];
       });
       const depositResult = "23/02/2022 || 1500.00 || || 1500.00 "
       const withdrawalResult = "23/02/2022 || || 500.00 || 1000.00 ";

@@ -18,7 +18,7 @@ describe('Transactions', () => {
       const money = 300;
       const bankAccount = new BankAccount;
       transactions.deposit(money, bankAccount);
-      expect(bankAccount.deposit).toHaveBeenCalledWith(money.toFixed(2), "23/02/2022");
+      expect(bankAccount.deposit).toHaveBeenCalledWith(money, "23/02/2022");
     })
     it("throws an error when a deposit is made with too many decimal places", () => {
       const transactions = new Transactions;
@@ -33,7 +33,7 @@ describe('Transactions', () => {
       const money = 300;
       const bankAccount = new BankAccount;
       transactions.withdraw(money, bankAccount);
-      expect(bankAccount.withdraw).toHaveBeenCalledWith(money.toFixed(2), "23/02/2022");
+      expect(bankAccount.withdraw).toHaveBeenCalledWith(money, "23/02/2022");
     })
     it("throws an error when a withdrawal is made with too many decimal places", () => {
       const transactions = new Transactions;
