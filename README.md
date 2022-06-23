@@ -76,6 +76,76 @@ The only edge case I have considered is someone trying to deposit of withdraw an
       +statement(report)
     }
 ```
+<br>
+
+## BankUI
+BankUI is the parent class and is the "client facing class". This means that this is the class that people using the software interact with. When you instantiate it, you need to inject instances of Bank Account, Transactions and Reports into it. 
+<br>
+The interface for BankUI is very simple, just three functions:
+<br><br>
+deposit(money)
+<br>
+deposit allows a user to deposit money. When you call this function with a figure representing the amount of money, it passes this figure to transactions to format the entry, as well as passing the instance of bankAccount. 
+<br><br>
+withdrawal(money)
+<br>
+withdrawal allows the user to withdraw money. When you call this function with a figure representing the amount of money, it passes this figure to transactions to format the entry, as well as passing the instance of bankAccount. 
+<br><br>
+printStatement()
+<br>
+printStatement allows the user to print a statement. When you call this function it first console logs the headers. It then calls the statement function from the report class, and passes it the return from the report function from the bankAccount class. 
+
+<br>
+
+## BankAccount
+
+BankAccount is a class that has responsibility for a single account and holding the infomation relating to that account. 
+<br><br>
+
+balance
+<br>
+A public attribute that holds the current balance. 
+<br>
+
+#transactions
+<br>
+A private array that holds objects containing transactions. 
+<br>
+
+deposit(money, date) and withdraw(money, date)
+<br>
+The amounts added to deposit or withdraw functions are first formatted by transactions, where a date is also added. They are then stored as objects in the private array #transactions. The public variable balance is also updated. 
+<br><br>
+report()
+<br>
+returns the array #transactions (which maybe suggests its not necessary?)
+<br>
+
+## Transactions
+
+Transactions is a class that is responsible for formatting transactions ready to be stored in the bank account. 
+<br><br>
+deposit(money, bankAccount)
+<br>
+deposit is a function that formats a deposit. Firstly it checks if there are too many decimal places, then it adds the current date and sends it on.
+<br><br>
+withdraw(money, bankAccount)
+<br>
+withdraw is a function that formats a withdrawal. Firstly it checks if there are too many decimal places, then it adds the current date and sends it on.
+<br><br>
+#getDate() <br>
+#getDate is a private function that gets the date and formats it.
+<br><br>
+#countDecimals(value)<br>
+#countDecimals is a private function that counts the decimal places in a number. I reckon this could maybe be extended to check if it's two decimal places and return a boolean. I'll put that in a later version
+<br>
+
+## Report
+
+Report is a class that has responsibility for formating the transactions from the bank account ready to print them. 
+<br> <br>
+statement(report)<br>
+statement is a function that takes the transactions array from bankAccount and formats it into strings with the correct spacing ready to print.
 
 # Proof of working software
 
