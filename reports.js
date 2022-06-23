@@ -1,5 +1,15 @@
 module.exports = class Reports {
   statement(report) {
-      return {date: "23/02/2022 ", credit: "1000.00 ", debit: "", balance: "1000.00 "};
+    const reportToPrint = report.map((object) => {
+       const creditToString = object.credit === 0.00 ? "" : `${object.credit.toFixed(2)} `;
+       const debitToString = object.debit === 0.00 ? "" : `${object.debit.toFixed(2)} `;
+       return {
+         date: object.date + " ",
+         credit: creditToString,
+         debit: debitToString,
+         balance: object.balance.toFixed(2) + " "
+       }
+    })
+    return reportToPrint;
   }
 }
