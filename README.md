@@ -81,6 +81,10 @@ The only edge case I have considered is someone trying to deposit of withdraw an
 
 The main issue I had was on integration. My use of `.toFixed(2)` early in the design led to failures in integration. I only realised at this stage that this function converts a number to a string. I solved this by doing this conversion at the last minute.
 
+# Running tests
+
+You can test this program by running the command ```jest```
+
 # Specification
 
 Requirements
