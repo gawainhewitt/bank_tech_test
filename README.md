@@ -41,7 +41,7 @@ bankUI.printStatement();
 
 # Design principles and approach
 
-I have tried to write this using strict TDD and have I think managed to stick with this. This has meant it has taken longer to write. 
+I have tried to write this using strict TDD and have I think managed to stick with this. 
 
 I have designed the classes based on my current understanding of loose coupling and high cohesion. To achieve this there is a "parent class" called BankUI, which can also be considered as the controller. There are then three other classes which are injected into the BankUI on instantiation. The reason for this design is so classes only know about each other through the interface and can be changed without breaking other classes. A design problem I then have run into as a consequence is how to provide an easy user experience in the command line as you have a lot of setting up to do as a consequence. 
 
@@ -77,6 +77,10 @@ The only edge case I have considered is someone trying to deposit of withdraw an
     }
 ```
 
+# Proof of working software
+
+![screenshot](./pictures/screenshot.png)
+
 # Issues encounted in development
 
 The main issue I had was on integration. My use of `.toFixed(2)` early in the design led to failures in integration. I only realised at this stage that this function converts a number to a string. I solved this by doing this conversion at the last minute.
@@ -87,6 +91,8 @@ You can test this program by running the command ```jest```
 
 # Specification
 
+These are the specifications I was given for the task.
+
 Requirements
 
 * You should be able to interact with your code via a REPL like IRB or Node. (You don't need to implement a command line interface that takes input from STDIN.)
@@ -94,7 +100,9 @@ Requirements
 * Account statement (date, amount, balance) printing.
 * Data can be kept in memory (it doesn't need to be stored to a database or anything).
 
- # Acceptance criteria
+# Acceptance criteria
+
+This is the acceptance criteria I was given for the task. 
 
 Given a client makes a deposit of 1000 on 10-01-2023
 And a deposit of 2000 on 13-01-2023
