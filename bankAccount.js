@@ -1,7 +1,6 @@
 module.exports = class BankAccount {
   balance = 0;
   #transactions = [];
-  
 
   deposit(money, date) {
     this.balance = this.balance + money;
