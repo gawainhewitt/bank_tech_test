@@ -1,4 +1,4 @@
-# bank tech test for makers academy
+# Bank tech test for makers academy
 
 Welcome to my Bank Tech Test. This is a program that runs in Node. 
 
