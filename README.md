@@ -45,7 +45,7 @@ I have tried to write this using strict TDD and have I think managed to stick wi
 
 I have designed the classes based on my current understanding of loose coupling and high cohesion. To achieve this there is a "parent class" called BankUI, which can also be considered as the controller. There are then three other classes which are injected into the BankUI on instantiation. The reason for this design is so classes only know about each other through the interface and can be changed without breaking other classes. A design problem I then have run into as a consequence is how to provide an easy user experience in the command line as you have a lot of setting up to do as a consequence. 
 
-The only edge case I have considered is someone trying to deposit of withdraw an amount with too many decimal points, which then throws an errors. I did consider not allowing someone to withdraw beyond their balance, but being that I have spent a lot of time in my overdraft I felt that, at present, I would leave that and ask for clarification. 
+The only edge case I have considered is someone trying to deposit of withdraw an amount with too many decimal points, which then throws an errors. I did consider not allowing someone to withdraw beyond their balance, but being that I have spent a lot of time in my overdraft I felt that, at present, I would leave that and ask for clarification. I also considered throwing an error if a number was added as a string, but I have not acted on this idea. 
 
 # Classes
 
