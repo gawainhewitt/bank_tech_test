@@ -79,7 +79,7 @@ The only edge case I have considered is someone trying to deposit of withdraw an
 <br>
 
 ## BankUI
-BankUI is the parent class and is the "client facing class". This means that this is the class that people using the software interact with. When you instantiate it, you need to inject instances of Bank Account, Transactions and Reports into it. 
+BankUI is the parent class and is the "client facing class". This means that this is the class that people using the software interact with. When you instantiate it, you need to inject instances of Bank Account, Transactions and Reports into it. Reflecting on the design, I wonder if it might be better to inject the class itself and then have the class create the instances. Something I will think about...
 <br>
 The interface for BankUI is very simple, just three functions:
 <br><br>
